@@ -118,11 +118,14 @@ public class FinalFrame extends JFrame{
 				NumberGUI.n = 0;
 				SingleGameButtons.i = 0;
 				CountDownFinal com2 = new CountDownFinal(3,SingleGameFrame.num);
+				
+				
 				Thread thcom2 = new Thread(com2);
 				thcom2.start();
 				PlayBGM.clip.stop();
 //				new SingleGameFrame(SingleGameFrame.num);
-				//dispose();
+				
+				dispose();
 					
 				}
 			});
@@ -139,6 +142,7 @@ public class FinalFrame extends JFrame{
 					NumberGUI.n = 0;
 					SingleGameButtons.i = 0;
 					SingleGameFrame.num = 0;
+					PlayBGM.clip.stop();
 					new MainFrame();
 					dispose();
 					
@@ -261,5 +265,7 @@ public class FinalFrame extends JFrame{
 			this.repaint();
 		}
 		
+		
 
 	}
+

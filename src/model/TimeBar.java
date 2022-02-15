@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import view.FinalFrame;
+import view.FinalFrame_test;
 
 public class TimeBar extends JLabel implements Runnable {
 	

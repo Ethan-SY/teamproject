@@ -35,12 +35,17 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		Default.DefaultFrame(this, width, height); // 클라이언트 프레임 디폴트 설정
 		MenuBar.MainMenuBar(this); // 클라이언트 상단 메뉴바 추가 메소드
-
+		
+		MainButtons.AddMainButtons(this);
 		// 배경음악 재생
-		introMusic.start();
+		if(introMusic.getState() == Thread.State.NEW) {
+			introMusic.start();
+		}
+			
+		
 		
 		// 메인 버튼 추가 메소드
-		MainButtons.AddMainButtons(this);
+		
 		
 	}
 

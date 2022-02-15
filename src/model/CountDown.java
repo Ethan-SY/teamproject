@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import view.FinalFrame;
 import view.MultiGameFrame;
 import view.SingleGameFrame;
 
@@ -25,6 +26,8 @@ public class CountDown extends JLabel implements Runnable {
 		jFrame.add(CountDownLabel);
 		this.sc = sc;
 		this.n = n;
+		
+		
 	}
 
 	@Override

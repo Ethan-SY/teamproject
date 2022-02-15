@@ -118,11 +118,11 @@ public class MainButtons extends JFrame{
 				MusicBackGround buttonSound = new MusicBackGround("/view/sounds/ButtonSound.mp3", false);
 				buttonSound.start();
 				// 3초 후, 싱글 1초로 음악맞추기 게임 시작
-//				MainFrame.introMusic.close();
-				MusicBackGround.isLoop = false;
+				MainFrame.introMusic.close();
 				CountDown com = new CountDown(3,1, jFrame);
 				Thread thcom = new Thread(com);
 				thcom.start();
+				
 				//CountDownFrame.add(com);
 			}
 
@@ -148,11 +148,11 @@ public class MainButtons extends JFrame{
 				MusicBackGround buttonSound = new MusicBackGround("/view/sounds/ButtonSound.mp3", false);
 				buttonSound.start();
 				// 싱글 5초로 음악맞추기 게임 시작
-//				MainFrame.introMusic.close();
-				MusicBackGround.isLoop = false;
+				MainFrame.introMusic.close();
 				CountDown com = new CountDown(3,5, jFrame);
 				Thread thcom = new Thread(com);
 				thcom.start();
+				
 				//CountDownFrame.add(com);
 			}
 			
@@ -178,11 +178,11 @@ public class MainButtons extends JFrame{
 				MusicBackGround buttonSound = new MusicBackGround("/view/sounds/ButtonSound.mp3", false);
 				buttonSound.start();
 				// 싱글 10초로 음악맞추기 게임 시작
-//				MainFrame.introMusic.close();
-				MusicBackGround.isLoop = false;
+				MainFrame.introMusic.close();
 				CountDown com = new CountDown(3,10, jFrame);
 				Thread thcom = new Thread(com);
 				thcom.start();
+				
 				//CountDownFrame.add(com);
 			}
 			

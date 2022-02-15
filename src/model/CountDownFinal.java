@@ -14,13 +14,23 @@ import view.MultiGameFrame;
 import view.SingleGameFrame;
 
 public class CountDownFinal extends JLabel implements Runnable{
-	
+	JLabel CountDownLabel = new JLabel("카운트 다운 시작 준비...");
 	int sc, n;
-
-	public CountDownFinal(int sc, int n) {
+	JFrame gettjFrame;
+	
+	public CountDownFinal(int sc, int n, JFrame jFrame) {
+		CountDownLabel.setBounds(310, 100, 660, 160);
+		CountDownLabel.setHorizontalAlignment(JLabel.CENTER);
+		CountDownLabel.setOpaque(true);
+		CountDownLabel.setBackground(new Color(0,0,0,235));
+		CountDownLabel.setForeground(Color.WHITE);
+		CountDownLabel.setFont(new Font("Serif",Font.BOLD,60));
+		jFrame.add(CountDownLabel);
+		
 		this.sc = sc;
 		this.n = n;
-		FinalFrame.FinalCountDown.setVisible(true);
+		this.gettjFrame = jFrame;
+		
 	}
 
 	
@@ -36,18 +46,24 @@ public class CountDownFinal extends JLabel implements Runnable{
 			   }
 			
 			if (sc > 0) {
-				FinalFrame.FinalCountDown.setText(sc + "초후에 시작합니다.\n준비하세요");
+				gettjFrame.setVisible(true);
+				CountDownLabel.setText(sc + "초후에 시작합니다.\n준비하세요");
 				sc--;
 			} else {
 				try {
 					if(n==1) {
 						new SingleGameFrame(1);
+						gettjFrame.setVisible(false);
+						
 					} else if(n==5) {
 						new SingleGameFrame(5);
+						gettjFrame.setVisible(false);
 					} else if(n==10) {
 						new SingleGameFrame(10);
+						gettjFrame.setVisible(false);
 					} else {
 						new MultiGameFrame();
+						gettjFrame.setVisible(false);
 					}
 					
 				} catch (IOException e1) {
@@ -56,8 +72,8 @@ public class CountDownFinal extends JLabel implements Runnable{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				FinalFrame.FinalCountDown.setVisible(false);
-//				FinalFrame.
+				CountDownLabel.setVisible(false);
+				
 				return;
 			  }
         }

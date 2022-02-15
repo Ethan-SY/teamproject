@@ -45,6 +45,7 @@ public class MenuBar extends JFrame{
 					PlayWav.clip.stop();
 				}
 				jframe.dispose();
+				System.exit(0);
 			}
 
 			@Override

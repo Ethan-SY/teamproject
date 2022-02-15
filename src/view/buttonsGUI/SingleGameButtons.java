@@ -43,6 +43,7 @@ public class SingleGameButtons extends JFrame {
 	public static int Nextnum = 0;
 	public static JLabel NGUI = null;
 	public static void AddSingleGameButtons(JFrame jFrame) throws IOException, InterruptedException {
+	
 		N = RandArray[Nextnum];
 	
 		ImageIcon NextBtn = new ImageIcon(Main.class.getResource("/view/buttonsGUI/NextButton.png"));

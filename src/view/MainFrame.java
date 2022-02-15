@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
 	// 클라이언트 메인 배경화면
 	private Image background = new ImageIcon(Main.class.getResource("/view/introBackground.jpg")).getImage();
 	// 클라이언트 메인 배경음
-	public static MusicBackGround introMusic = new MusicBackGround("/view/sounds/introMusic.mp3", true);
+	public static MusicBackGround introMusic;// = new MusicBackGround("/view/sounds/introMusic.mp3", true);
 
 	private int width = 1280;
 	private int height = 720;
@@ -37,10 +37,13 @@ public class MainFrame extends JFrame {
 		MenuBar.MainMenuBar(this); // 클라이언트 상단 메뉴바 추가 메소드
 		
 		MainButtons.AddMainButtons(this);
+		introMusic = new MusicBackGround("/view/sounds/introMusic.mp3", true);
 		// 배경음악 재생
 		if(introMusic.getState() == Thread.State.NEW) {
+
 			introMusic.start();
 		}
+		
 			
 		
 		

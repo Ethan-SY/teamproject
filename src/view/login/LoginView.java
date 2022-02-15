@@ -12,6 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import main.Main;
+import model.ScorePrint;
 
 public class LoginView extends JFrame{
 	private Main main;
@@ -93,6 +94,7 @@ public class LoginView extends JFrame{
 	
 		
 	public void isLoginCheck(){
+		new ScorePrint(getName(), getName(), ABORT);
 		UserName.user = userText.getText();
 		if(userText.getText().equals("test") && new String(passText.getPassword()).equals("1234")){
 			JOptionPane.showMessageDialog(null, "Success");

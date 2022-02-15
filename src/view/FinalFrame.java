@@ -15,6 +15,10 @@ import java.awt.event.MouseMotionAdapter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,9 +29,12 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
+import org.json.simple.JSONObject;
+
 import main.Main;
 import model.CountDown;
 import model.CountDownFinal;
+import model.ScorePrint;
 import view.buttonsGUI.SingleGameButtons;
 import view.login.UserName;
 import view.numberGUI.NumberGUI;
@@ -50,11 +57,27 @@ public class FinalFrame extends JFrame{
 		private JLabel PlayerName = new JLabel(UserName.user);
 		public static JLabel FinalCountDown = new JLabel("카운트 다운 시작 준비...");
 		int index;
+		public static int sc=3, n;
 		JList MusicList;
 		JLabel PlayList;
 		JButton finalExit, reGame, reStart;
+//		public ArrayList<ScorePrint> ScorePrintArr;
+//		public static int Key = 0;
+//		public static Map<Integer,ScorePrint> Score_Info_Map = new HashMap<>();  // 스코어 출력정보 저장
+		
+		
+		
 		
 		public FinalFrame() {
+			
+//			ScorePrintArr.add(new ScorePrint(UserName.user, "20시30분", SingleGameButtons.i));
+//			Score_Info_Map.put(Key, );
+//			Key++;
+//				
+//			JSONObject jo = new JSONObject();
+//			jo.putAll(Score_Info_Map);
+			
+			
 			new PlayBGM();
 			setUndecorated(true); // 기본메뉴바 숨기기
 			setBackground(new Color(0, 0, 0, 0)); // paintcomponect 했을때 배경이 회색이 아니라 흰색으로 바뀜
@@ -64,6 +87,7 @@ public class FinalFrame extends JFrame{
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setLayout(null);
 			
+		
 			
 			FinalCountDown.setBounds(310, 100, 660, 160);
 			FinalCountDown.setHorizontalAlignment(JLabel.CENTER);
@@ -117,17 +141,19 @@ public class FinalFrame extends JFrame{
 				SingleGameButtons.LastV.clear();  
 				NumberGUI.n = 0;
 				SingleGameButtons.i = 0;
-				CountDownFinal com2 = new CountDownFinal(3,SingleGameFrame.num);
-				
-				
+							
+				CountDownFinal com2 = new CountDownFinal(3,SingleGameFrame.num,Main.MA);
 				Thread thcom2 = new Thread(com2);
 				thcom2.start();
 				PlayBGM.clip.stop();
+				dispose();
+				
+				
 //				new SingleGameFrame(SingleGameFrame.num);
 				
-				dispose();
 					
 				}
+				
 			});
 			
 			reStart = new JButton("처음으로");

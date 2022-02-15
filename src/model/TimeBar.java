@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import view.FinalFrame;
-import view.FinalFrame_test;
+
 
 public class TimeBar extends JLabel implements Runnable {
 	
@@ -15,7 +15,7 @@ public class TimeBar extends JLabel implements Runnable {
 	Color color = new Color(255, 0, 0);
 	int second;
 	JFrame getFrame;
-//	JFrame FinalFrame = new JFrame();
+
 	public int getGow() {
 		return gow;
 	}

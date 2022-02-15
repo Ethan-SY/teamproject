@@ -1,7 +1,6 @@
 package model;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ import view.SingleGameFrame;
 public class CountDown extends JLabel implements Runnable {
 	JLabel CountDownLabel = new JLabel("카운트 다운 시작 준비...");
 	int sc, n;
-
+	JFrame getjFrame;
 	public CountDown(int sc, int n, JFrame jFrame) {
 		CountDownLabel.setBounds(310, 100, 660, 160);
 		CountDownLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -24,9 +23,10 @@ public class CountDown extends JLabel implements Runnable {
 		CountDownLabel.setForeground(Color.WHITE);
 		CountDownLabel.setFont(new Font("Serif",Font.BOLD,60));
 		jFrame.add(CountDownLabel);
+		
 		this.sc = sc;
 		this.n = n;
-		
+		this.getjFrame = jFrame;
 		
 	}
 
@@ -48,12 +48,17 @@ public class CountDown extends JLabel implements Runnable {
 				try {
 					if(n==1) {
 						new SingleGameFrame(1);
+						getjFrame.setVisible(false);
+						
 					} else if(n==5) {
 						new SingleGameFrame(5);
+						getjFrame.setVisible(false);
 					} else if(n==10) {
 						new SingleGameFrame(10);
+						getjFrame.setVisible(false);
 					} else {
 						new MultiGameFrame();
+						getjFrame.setVisible(false);
 					}
 					
 				} catch (IOException e1) {

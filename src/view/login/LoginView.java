@@ -94,7 +94,7 @@ public class LoginView extends JFrame{
 	
 		
 	public void isLoginCheck(){
-		new ScorePrint(getName(), getName(), ABORT);
+//		new ScorePrint(getName(), getName(), ABORT);
 		UserName.user = userText.getText();
 		if(userText.getText().equals("test") && new String(passText.getPassword()).equals("1234")){
 			JOptionPane.showMessageDialog(null, "Success");

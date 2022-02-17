@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import view.MainFrame;
 import view.login.LoginView;
 
+
 public class Main {
 	LoginView loginView;
 	public static JFrame MA;

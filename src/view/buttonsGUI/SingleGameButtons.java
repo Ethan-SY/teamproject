@@ -357,7 +357,7 @@ public class SingleGameButtons extends JFrame {
 
 		TimeBar timeBar;
 		Thread threadBar;
-		timeBar = new TimeBar(5,jFrame);
+		timeBar = new TimeBar(20,jFrame);
 		threadBar = new Thread(timeBar);
 		threadBar.start();
 		jFrame.add(timeBar);

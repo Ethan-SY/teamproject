@@ -1,1 +1,14 @@
-{}
+{
+	"Final_Score": [
+		{
+			"score": 1,
+			"name": "test",
+			"time": "20시30분"
+		},
+		{
+			"score": 1,
+			"name": "test",
+			"time": "20시301분"
+		}
+	]
+}

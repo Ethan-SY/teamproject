@@ -10,7 +10,7 @@ public class PlayBGM extends Thread {
 	public PlayBGM() {
 		try {
 
-			File file = new File("C:\\Users\\Yeop\\Desktop\\LineNo5\\src\\finalIN\\nawhij - loud nine.wav");
+			File file = new File("../LineNo5/src/finalIN/nawhij - loud nine.wav");
 			clip = AudioSystem.getClip();
 			clip.open(AudioSystem.getAudioInputStream(file));
 

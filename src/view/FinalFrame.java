@@ -24,7 +24,6 @@ import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 import javax.swing.ImageIcon;
@@ -34,8 +33,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.event.MouseInputAdapter;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 import main.Main;
 import model.CountDownFinal;
 import model.ScorePrint;
@@ -44,15 +46,14 @@ import view.login.UserName;
 import view.numberGUI.NumberGUI;
 import view.sounds.PlayBGM;
 
-public class FinalFrame extends JFrame {
+public class FinalFrame extends JFrame{
 
 	private Image SCI;
 	private Graphics SCG;
 	private Image FinalBackGround = new ImageIcon("../LineNo5/src/finalIN/finalBackground.jpg").getImage();
 	private JLabel menuB = new JLabel(new ImageIcon("../LineNo5/src/view/menuGUI/MenuBar.png"));
-	private ImageIcon exitover = new ImageIcon(
-			"C:\\Users\\Yeop\\Desktop\\LineNo5\\src\\finalIN\\ExitButtonMouseOver.png");
-	private ImageIcon exitBasic = new ImageIcon("C:\\Users\\Yeop\\Desktop\\LineNo5\\src\\finalIN\\ExitButton.png");
+	private ImageIcon exitover = new ImageIcon("../LineNo5/src/finalIN/ExitButtonMouseOver.png");
+	private ImageIcon exitBasic = new ImageIcon("../LineNo5/src/finalIN/ExitButton.png");
 	private JButton exit = new JButton(exitBasic);
 	private int mouseX, mouseY;
 	private JLabel gameoverLB = new JLabel(new ImageIcon("../LineNo5/src/finalIN/GameOverLB.png"));
@@ -64,10 +65,11 @@ public class FinalFrame extends JFrame {
 	public static int sc = 3, n;
 	JList MusicList;
 	JLabel PlayList;
-	JButton finalExit, reGame, reStart;
-
-//		public static ArrayList<ScorePrint> ScorePrintArr = null; //new ArrayList<ScorePrint>();
-
+	JButton finalExit, reGame, reStart,showRank;
+	public static ArrayList<String> Chart_Day = new ArrayList<String>();     //상위 10개 날짜 저장
+    public static ArrayList<Integer> Chart_Score = new ArrayList<Integer>();  //상위 10개 점수 저장 
+    
+	
 	public FinalFrame() {
 		File file = null;
 		FileWriter fw = null;
@@ -96,7 +98,7 @@ public class FinalFrame extends JFrame {
 		Score.setBounds(330, 315, SingleGameButtons.NGUI.getWidth(), SingleGameButtons.NGUI.getHeight());
 		add(Score);
 
-		ArrayList<ScorePrint> input_Ten = new ArrayList<ScorePrint>();
+		
 		String Info = UserName.user + "\t" + formatedNow + "\t" + SingleGameButtons.i;
 		String fileName = "C:\\Users\\Yeop\\Desktop\\WO.txt";
 
@@ -147,39 +149,64 @@ public class FinalFrame extends JFrame {
 
 			});
 			/// 추가종료
-
+			
+			// 플레이 어레이 리스트
+			// 점수 어레이 리스ㅡ
+			
+			
+			
+			
+			// 텍스트 파일에 저장
 			PrintWriter writer = new PrintWriter(file);
-			writer.print("");
+			writer.print("");   
 			writer.close();
 
 			if (input_all.size() < 10) {
 				for (int i = 0; i < input_all.size(); i++) {
+					
 					if (i == 0) {
 						fw.append(input_all.get(i).toString());
 						fw.flush();
+						String[] arry2 = input_all.get(i).toString().split("\t");
+						Chart_Day.add(arry2[1]);
+						Chart_Score.add(Integer.valueOf(arry2[2]));
 					} else {
 						fw.append("\n" + input_all.get(i).toString());
 						fw.flush();
+						String[] arry2 = input_all.get(i).toString().split("\t");
+						Chart_Day.add(arry2[1]);
+						Chart_Score.add(Integer.valueOf(arry2[2]));
 					}
 					System.out.println(input_all.get(i).toString());
 				}
 			} else {
 				for (int i = 0; i < 10; i++) {
+					
 					if (i == 0) {
 						fw.append(input_all.get(i).toString());
 						fw.flush();
+						String[] arry2 = input_all.get(i).toString().split("\t");
+						Chart_Day.add(arry2[1]);
+						Chart_Score.add(Integer.valueOf(arry2[2]));
+						
 					} else {
 						fw.append("\n" + input_all.get(i).toString());
 						fw.flush();
+						String[] arry2 = input_all.get(i).toString().split("\t");
+						Chart_Day.add(arry2[1]);
+						Chart_Score.add(Integer.valueOf(arry2[2]));
+						
 					}
 					System.out.println(input_all.get(i).toString());
 				}
-
+				
 			}
+			
 			fw.append("\n");
 			fw.flush();
 
 			bufReader.close();
+			
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -229,7 +256,8 @@ public class FinalFrame extends JFrame {
 				thcom2.start();
 				PlayBGM.clip.stop();
 				dispose();
-
+				
+				
 //				new SingleGameFrame(SingleGameFrame.num);
 
 			}
@@ -251,10 +279,35 @@ public class FinalFrame extends JFrame {
 				PlayBGM.clip.stop();
 				new MainFrame();
 				dispose();
+				
+				Rank_View.Stage.close();
 
 			}
 		});
 
+		showRank = new JButton("랭크보기");
+		showRank.setBounds(450, 650, 100, 50);
+		add(showRank);
+		
+		showRank.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+//				SingleGameButtons.LastV.clear();
+//				NumberGUI.n = 0;
+//				SingleGameButtons.i = 0;
+//				SingleGameFrame.num = 0;
+//				PlayBGM.clip.stop();
+				Rank_View.launch(Rank_View.class);
+				
+				
+//				dispose();
+
+			}
+		});
+		
+		
+		
 		PlayList = new JLabel("Play List");
 		PlayList.setBounds(700, 200, 300, 50);
 		PlayList.setFont(new Font("굴림", Font.BOLD, 30));
